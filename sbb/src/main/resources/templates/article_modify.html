@@ -8,6 +8,11 @@
     <title>Document</title>
 </head>
 <body>
+<a th:href="@{|/article/list|}">로고</a>
+<a th:href="@{|/user/login|}">로그인</a>
+<a th:href="@{|/user/logout|}">로그아웃</a>
+<a th:href="@{|/user/signup|}">회원가입</a>
+
 
 <form th:action="@{|/user/login/|}" method="post">
     <input type="text" name="title" th:value="${article.title}">
