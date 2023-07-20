@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<a th:href="@{|/article/list|}">로고</a>
+<a th:href="@{|/user/login|}">로그인</a>
+<a th:href="@{|/user/logout|}">로그아웃</a>
+<a th:href="@{|/user/signup|}">회원가입</a>
+
+<table>
+  <thead>
+  <tr>
+    <th>제목</th>
+    <th>내용</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="article: ${articleList}">
+    <td>
+      <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.title}"></a>
+    </td>
+    <td th:text="${article.content}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<a th:href="@{|/article/create|}">등록</a>
+
+</body>
+</html>

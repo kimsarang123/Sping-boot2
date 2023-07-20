@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login_form</title>
+</head>
+<body>
+
+<form th:object="${userForm}" method="post">
+  <div for="username">아이디</div>
+  <input type="text" id="username" name="username">
+  <div for="password1">비밀번호</div>
+  <input type="password" id="password1" name="password1">
+    <button type="submit">로그인</button>
+</form>
+
+</body>
+</html>
