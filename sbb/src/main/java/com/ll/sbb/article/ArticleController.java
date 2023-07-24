@@ -24,11 +24,11 @@ public class ArticleController {
     }
 
     @GetMapping("/create")
-    public String create(ArticleForm articleForm){
+    public String Create(ArticleForm articleForm){
         return "article_form";
     }
     @PostMapping("/create")
-    public String create2(@Valid ArticleForm articleForm, BindingResult bindingResult){
+    public String Create(@Valid ArticleForm articleForm, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return "article_form";
         }
@@ -47,8 +47,8 @@ public class ArticleController {
         Article article = this.articleService.Detail(id);
         model.addAttribute("article", article);
 
-        article.setTitle(article.getTitle());
-        article.setContent(article.getContent());
+        article.setTitle(articleForm.getTitle());
+        article.setContent(articleForm.getContent());
         return "article_modify";
 
     }

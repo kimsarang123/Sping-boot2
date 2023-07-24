@@ -26,11 +26,13 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String signup(Model model, @Valid UserForm userForm, BindingResult bindingResult){
+    public String signup(@Valid UserForm userForm, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return "signup_form";
         }
-        this.userService.create(userForm.getUsername(),userForm.getEmail(), userForm.getPassword1());
+        if (!userForm.getUsername1().equals(userForm.getPassword1().equals(userForm.getPassword2().equals(userForm.getEmail1())))){
+            this.userService.create(userForm.getUsername1(),userForm.getEmail1(), userForm.getPassword1());
+        }
         return "redirect:/article/list";
     }
 }

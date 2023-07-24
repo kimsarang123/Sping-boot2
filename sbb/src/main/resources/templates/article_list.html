@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}"      xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,11 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<a th:href="@{|/article/list|}">로고</a>
-<a th:href="@{|/user/login|}">로그인</a>
-<a th:href="@{|/user/logout|}">로그아웃</a>
-<a th:href="@{|/user/signup|}">회원가입</a>
-
+<div layout:fragment="content">
 <table>
   <thead>
   <tr>
@@ -31,6 +27,6 @@
 </table>
 
 <a th:href="@{|/article/create|}">등록</a>
-
+</div>
 </body>
 </html>
