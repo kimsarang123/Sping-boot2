@@ -31,7 +31,6 @@ public class ArticleService {
         }
     }
 
-
     public void Modify(Article article,String title, String content) {
         article.setTitle(title);
         article.setContent(content);

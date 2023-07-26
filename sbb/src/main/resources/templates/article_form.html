@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,13 +9,13 @@
     <title>Document</title>
 </head>
 <body>
-
-<form th:action="@{/article/create}" method="post">
+<div layout:fragment="content">
+<form th:action="@{|/article/create|}" method="post">
   <input type="text" name="title">
   <br>
-  <textarea name="content" id="content" cols="30" rows="10"></textarea>
+  <textarea name="content" id="content" cols="50" rows="10"></textarea>
 <button type="submit">등록</button>
 </form>
-
+</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,14 +9,15 @@
     <title>login_form</title>
 </head>
 <body>
-
-<form th:object="${userForm}" method="post">
-  <div for="username1">아이디</div>
-  <input type="text" id="username1" name="username1">
-  <div for="password1">비밀번호</div>
-  <input type="password" id="password1" name="password1">
+<div layout:fragment="content">
+<form th:object="${userForm}" th:action="@{/user/login}" method="post">
+  <div for="username">아이디</div>
+  <input type="text" id="username" name="username">
+  <div for="password">비밀번호</div>
+  <input type="password" id="password" name="password">
     <button type="submit">로그인</button>
 </form>
-
+</div>
 </body>
 </html>
+

@@ -30,9 +30,8 @@ public class UserController {
         if (bindingResult.hasErrors()){
             return "signup_form";
         }
-        if (!userForm.getUsername1().equals(userForm.getPassword1().equals(userForm.getPassword2().equals(userForm.getEmail1())))){
-            this.userService.create(userForm.getUsername1(),userForm.getEmail1(), userForm.getPassword1());
-        }
+        this.userService.signup(userForm.getUsername(),userForm.getPassword1(), userForm.getEmail());
         return "redirect:/article/list";
     }
+
 }

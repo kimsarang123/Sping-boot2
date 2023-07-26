@@ -1,7 +1,9 @@
 package com.ll.sbb.article;
 
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +17,6 @@ import java.util.List;
 public class ArticleController {
 
     private final ArticleService articleService;
-
     @GetMapping("/list")
     public String list(Model model){
         List<Article> articleList=this.articleService.List();
@@ -43,6 +44,7 @@ public class ArticleController {
         return "article_detail";
     }
     @GetMapping("/modify/{id}")
+    @PreAuthorize("isAuthenticated")
     public String modify(Model model, @PathVariable("id") Integer id, ArticleForm articleForm) {
         Article article = this.articleService.Detail(id);
         model.addAttribute("article", article);
@@ -53,17 +55,19 @@ public class ArticleController {
 
     }
     @PostMapping("/modify/{id}")
+    @PreAuthorize("isAuthenticated")
     public String modify(@PathVariable("id") Integer id, @Valid ArticleForm articleForm, BindingResult bindingResult) {
         Article article = this.articleService.Detail(id);
         if (bindingResult.hasErrors()){
             return "article_modify";
         }
         this.articleService.Modify(article, articleForm.getTitle(),articleForm.getContent());
-        return String.format("redirect:/article/detail/%s",article.getId());
+        return String.format("redirect:/article/detail/%s",id);
     }
 
     @GetMapping("/delete/{id}")
-    public String Delete1(Model model, @PathVariable("id") Integer id, ArticleForm articleForm) {
+    @PreAuthorize("isAuthenticated")
+    public String Delete(@PathVariable("id") Integer id, ArticleForm articleForm) {
         Article article = this.articleService.Detail(id);
         this.articleService.Delete(article);
         article.setTitle(articleForm.getTitle());
